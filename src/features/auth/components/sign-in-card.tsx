@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/src/components/ui/button";
 import {
   Card,
   CardHeader,
   CardDescription,
   CardContent,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/src/components/ui/card";
 import { TriangleAlert } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
+import { Input } from "@/src/components/ui/input";
+import { Separator } from "@/src/components/ui/separator";
 import { SignInFlow } from "../types";
 
 import { useAuthActions } from "@convex-dev/auth/react";
