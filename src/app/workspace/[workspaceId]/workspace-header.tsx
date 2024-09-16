@@ -1,3 +1,6 @@
+import {useState} from "react"
+
+
 import { Doc } from "../../../../convex/_generated/dataModel";
 
 import { ChevronDown, SquarePen, ListFilter } from "lucide-react";
@@ -12,6 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/src/components/ui/dropdown-menu";
+import { PreferencesModal } from "./preferences-modal";
 
 interface WorkspaceHeaderProps {
   workspace: Doc<"workspaces">;
@@ -22,7 +26,14 @@ export const WorkspaceHeader = ({
   workspace,
   isAdmin,
 }: WorkspaceHeaderProps) => {
+
+  const [preferencesOpen, setPreferencesOpen] = useState(false)
   return (
+    <>
+    <PreferencesModal 
+        open={preferencesOpen}
+        setOpen={setPreferencesOpen}
+        initialValue={workspace.name} />
     <div className='flex items-center justify-between px-4 h-[49px] gap-0.5'>
       <DropdownMenu>
         <DropdownMenuTrigger>
@@ -54,15 +65,15 @@ export const WorkspaceHeader = ({
               </DropdownMenuItem>
               <DropdownMenuItem
                 className='cursor-pointer py-2'
-                onClick={() => {}}>
+                onClick={() => setPreferencesOpen(true)}>
                 Preferences
               </DropdownMenuItem>
             </>
           )}
         </DropdownMenuContent>
       </DropdownMenu>
-          <div className='flex items-center gap-0.5'>
-              
+         
+        <div className='flex items-center gap-0.5'>     
           <Hint label="filter Conversation" side="bottom">
         <Button variant='transparent' size='iconSm'>
           <ListFilter className='size-4' />
@@ -76,5 +87,6 @@ export const WorkspaceHeader = ({
         </Hint>
       </div>
     </div>
+    </>
   );
 };
